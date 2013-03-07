@@ -1,1 +1,11 @@
 <%= link_to "New Project", new_project_path %>
+<br/>
+<br/>
+<br/>
+
+<h3>Here's a list of your projects:</h3>
+<ul>
+  <%@projects.each do |project|%>
+    <li><%= project.name %></li>
+  <% end %>
+</ul>

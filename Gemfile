@@ -46,3 +46,7 @@ end
 group :test do
   gem 'capybara', '1.1.2'
 end
+
+group :development do
+  gem 'pry'
+end
