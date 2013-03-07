@@ -1,12 +1,7 @@
 class ProjectsController < ApplicationController
 
     def index
-      binding.pry
       @projects = Project.all
-      #respond_to do |format|
-      #  format.HTML
-      #  format.json { render @projects.to_json }
-      #end
     end
 
     def new
