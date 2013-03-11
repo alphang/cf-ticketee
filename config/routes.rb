@@ -2,7 +2,9 @@ Ticketee::Application.routes.draw do
 
   root :to => "projects#index" #Project controller's index action
 
-  resources :projects
+  resources :projects do
+    resources :tickets
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
