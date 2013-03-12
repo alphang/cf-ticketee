@@ -51,6 +51,7 @@ group :test do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-debugger'
+  gem 'email_spec', '1.2.1'
 end
 
 group :development do
