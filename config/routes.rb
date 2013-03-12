@@ -1,5 +1,7 @@
 Ticketee::Application.routes.draw do
 
+  devise_for :users
+
   root :to => "projects#index" #Project controller's index action
 
   resources :projects do
