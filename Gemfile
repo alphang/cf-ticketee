@@ -24,7 +24,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'devise', '2.1.0.rc'
+gem 'devise', '~> 2.1.0.rc'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -43,6 +43,7 @@ gem 'devise', '2.1.0.rc'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.11'
+  gem 'letter_opener', '~> 1.1.0'
 end
 
 group :test do

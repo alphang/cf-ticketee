@@ -7,7 +7,7 @@ feature 'Deleting tickes' do
   let!(:ticket) do
     ticket = Factory(:ticket, :project => project)
     ticket.update_attribute(:user, user)
-    ticket
+    ticket #return ticket
   end
 
   before do
