@@ -2,7 +2,13 @@ Ticketee::Application.routes.draw do
 
   get "/admin/users/index"
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+
+  get '/awaiting_confirmation', :to => "users#confirmation", :as => 'confirm_user'
+  # new route that only responds to GET
+  # user#confirmation means the "confirmation" action in the UserController
+  # as... defines an alias where paths will be prefixed by "cofirmed_user"
+  # you can also do POST, PUT, DELETE actions, or "match"
 
   namespace :admin do
     root :to => "base#index"
