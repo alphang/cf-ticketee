@@ -4,7 +4,9 @@ feature "Viewing Tickets" do
   before do
     textmate_2 = Factory(:project, :name => "TextMate 2")
 
-    user = Factory(:user)
+    #user = Factory(:user)
+    user = Factory(:confirmed_user)
+    define_permission!(user, "view", textmate_2)
     ticket = Factory(:ticket,
              :project => textmate_2,
              :title => "Make it shiny!",
@@ -12,12 +14,14 @@ feature "Viewing Tickets" do
     ticket.update_attribute(:user, user)
 
     internet_explorer = Factory(:project, :name=>"Internet Explorer")
+    define_permission!(user, "view", internet_explorer)
 
     Factory(:ticket,
             :project => internet_explorer,
             :title => "Standard compliance",
             :description => "Isn't a  joke.")
 
+    sign_in_as!(user)
     visit '/'
   end
 
