@@ -6,6 +6,10 @@ class TicketsController < ApplicationController
   before_filter :find_ticket,
     :only => [:show, :edit, :update, :destroy]
 
+  before_filter :authorize_create!, :only => [:new, :create]
+  #uses the current_user object from authenticate_user
+  #uses the @project object from find_project
+
   def new
     @ticket = @project.tickets.build
   end
@@ -57,5 +61,12 @@ class TicketsController < ApplicationController
       rescue ActiveRecord::RecordNotFound
       flash[:alert] = "The project you were looking for could not be found."
       redirect_to root_path
+    end
+
+    def authorize_create!
+      if !current_user.admin? && cannot?("create tickets".to_sym, @project)
+        flash[:alert] = "You cannot create tickets on this project."
+        redirect_to @project
+      end
     end
 end
