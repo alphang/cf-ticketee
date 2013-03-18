@@ -10,9 +10,15 @@ Ticketee::Application.routes.draw do
   # as... defines an alias where paths will be prefixed by "cofirmed_user"
   # you can also do POST, PUT, DELETE actions, or "match"
 
+  put '/admin/users/:user_id/permissions',
+      :to => 'admin/permissions#update', #controller
+      :as => :update_user_permissions #method
+
   namespace :admin do
     root :to => "base#index"
-    resources :users
+    resources :users do
+      resources :permissions
+    end
   end
 
   root :to => "projects#index" #Project controller's index action
