@@ -28,6 +28,8 @@ gem 'devise', '~> 2.1.0.rc'
 
 gem 'cancan', '~> 1.6.7'
 
+gem 'paperclip', '~> 2.7.0'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -55,7 +57,7 @@ group :test do
   gem 'pry-doc'
   gem 'pry-debugger'
   gem 'email_spec', '1.2.1'
-  gem 'simplecov', :require => false
+  #gem 'simplecov', :require => false
 end
 
 group :development do

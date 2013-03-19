@@ -8,16 +8,10 @@ feature "Creating Tickets" do
     define_permission!(user, "view", project)
     define_permission!(user, "create tickets", project)
     sign_in_as!(user)
-    #user.confirm!
 
     visit '/'
     click_link "Internet Explorer"
     click_link "New Ticket"
-    #message = "You need to sign in or sign up before continuing."
-    #page.should have_content(message)
-    #fill_in "Email", :with => "ticketee@example.com"
-    #fill_in "Password", :with => "password"
-    #click_button "Sign in"
     within("h2") {page.should have_content("New Ticket")}
   end
 
@@ -44,6 +38,17 @@ feature "Creating Tickets" do
     click_button "Create Ticket"
     page.should have_content("Ticket has not been created.")
     page.should have_content("Description is too short")
+  end
+
+  scenario "Creating a ticket with an attachment" do
+    fill_in "Title", :with => "Add documentation for blink tag"
+    fill_in "Description", :with => "The blink tag has a speed attribute"
+    attach_file "File", "spec/fixtures/speed.txt"
+    click_button "Create Ticket"
+    page.should have_content("Ticket has been created.")
+    within("#ticket .asset") do
+      page.should have_content("speed.txt")
+    end
   end
 
 end
