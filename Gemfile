@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '~> 3.2.11'
 
 gem 'dynamic_form', '1.1.4'
 
@@ -55,6 +55,7 @@ group :test do
   gem 'pry-doc'
   gem 'pry-debugger'
   gem 'email_spec', '1.2.1'
+  gem 'simplecov', :require => false
 end
 
 group :development do

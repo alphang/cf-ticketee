@@ -7,9 +7,10 @@ class Ability
 
   def initialize(user)
     user.permissions.each do |permission|
-      can permission.action.to_sym,
+      can permission.action.to_sym, #establishes a permission
       permission.thing_type.constantize do |thing|
-        thing.nil? ||
+      #thing_type.constantize is like <Classname>.<Call constructor>
+        thing.nil? || # allows broadly, ie. just specify an action, and not a thing
         permission.thing_id.nil? ||
         permission.thing_id == thing.id
       end
