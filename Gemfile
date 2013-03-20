@@ -57,6 +57,7 @@ group :test do
   gem 'pry-doc'
   gem 'pry-debugger'
   gem 'email_spec', '1.2.1'
+  gem 'database_cleaner', '~> 0.7.2'
   #gem 'simplecov', :require => false
 end
 
