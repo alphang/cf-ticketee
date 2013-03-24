@@ -12,14 +12,18 @@ Ticketee::Application.routes.draw do
 
   put '/admin/users/:user_id/permissions',
       :to => 'admin/permissions#update', #controller
-      :as => :update_user_permissions #method
+      :as => :update_user_permissions #alias, usable by the view
 
   namespace :admin do
     root :to => "base#index"
     resources :users do
       resources :permissions
     end
-    resources :states
+    resources :states do
+      member do
+        get :make_default
+      end
+    end
   end
 
   root :to => "projects#index" #Project controller's index action
