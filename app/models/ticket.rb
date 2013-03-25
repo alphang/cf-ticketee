@@ -2,6 +2,10 @@ class Ticket < ActiveRecord::Base
 
   before_create :associate_tags
 
+  searcher do
+    label :tag, :from => :tags, :field => :name
+  end
+
   belongs_to :project
   belongs_to :state
   belongs_to :user
